@@ -9,12 +9,34 @@
     width: 50%;
 }
 
+.select {
+    margin-block: .6rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box {
+    display: grid;
+    place-items: center;
+}
+
+.select>* {
+    width: fit-content;
+    padding: .25rem;
+}
+
+.select>:last-child {
+    justify-self: end;
+}
+
 .board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
 
 .box {
-    border: 1px solid salmon;
+    border: 1px solid cadetblue;
     min-height: 100px;
 }

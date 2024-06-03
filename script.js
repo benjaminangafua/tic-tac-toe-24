@@ -1,9 +1,11 @@
-// Creating Board
+const players = document.querySelector(".header");
 const board = document.querySelector(".board");
+const selectBoard = document.querySelector(".select");
+let player;
 const createElement = (ele) => {
   return document.createElement(ele);
 };
-
+// Creating Board
 const drawBoard = () => {
   for (let i = 0; i < 9; i++) {
     const bd = createElement("div");
@@ -14,16 +16,46 @@ const drawBoard = () => {
 drawBoard();
 
 // Set a level
-const level = document.querySelector(".select");
-const drawDropDown = () => {
+const setLevel = () => {
   const selection = createElement("select");
   const options = ["Easy", "Medium", "Impossible", "Two Players"];
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < options.length; i++) {
     const option = createElement("option");
     option.setAttribute("value", options[i]);
     selection.append(option);
     option.innerHTML = options[i];
   }
-  level.append(selection);
+  selectBoard.append(selection);
 };
-drawDropDown();
+setLevel();
+
+// Set Player
+const setPlayer = () => {
+  const playersDropDown = createElement("select");
+  playersDropDown.setAttribute("class", "select-player");
+  const options = ["X", "O"];
+  for (const opt in options) {
+    const option = createElement("option");
+    option.setAttribute("value", options[opt]);
+    playersDropDown.append(option);
+    option.innerHTML = options[opt];
+  }
+
+  selectBoard.append(playersDropDown);
+};
+setPlayer();
+
+// Select a player
+document
+  .querySelector(".select-player")
+  .addEventListener("change", (event) => (player = event.target.value));
+
+// Get Box Click
+const boxes = document.querySelectorAll(".box");
+boxes.forEach((item) => {
+  item.addEventListener("click", (e) => {
+    if (player) {
+      e.target.innerHTML = player;
+    }
+  });
+});
