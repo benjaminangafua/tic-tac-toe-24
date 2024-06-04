@@ -1,7 +1,7 @@
 const players = document.querySelector(".header");
 const board = document.querySelector(".board");
 const selectBoard = document.querySelector(".select");
-let player;
+let player = "X";
 const createElement = (ele) => {
   return document.createElement(ele);
 };
