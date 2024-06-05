@@ -59,3 +59,6 @@ boxes.forEach((item) => {
     }
   });
 });
+
+//Toggle turn
+const toggleTurn = () => {};
